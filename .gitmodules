@@ -1,0 +1,3 @@
+[submodule "shairport-sync-radio"]
+	path = shairport-sync-radio
+	url = https://github.com/Alex1s/shairport-sync-radio.git
