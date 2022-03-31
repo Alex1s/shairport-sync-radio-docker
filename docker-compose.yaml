@@ -1,4 +1,4 @@
-version: "3.8"
+version: "3.7"
 
 services:
   shairport-sync-radio:
@@ -6,5 +6,6 @@ services:
     build: .
     container_name: shairport-sync-radio 
     environment:
-      - DEBUG=1
+      - PORT=8080
+#      - DEBUG=1
     restart: unless-stopped
