@@ -1,7 +1,8 @@
 FROM node:buster
 
-# install ffmpeg
+# Install shairport-sync and ffmpeg
 RUN apt update
+RUN apt install -y shairport-sync
 RUN apt install -y ffmpeg
 RUN rm -r /var/lib/apt/lists/*
 
@@ -19,6 +20,7 @@ RUN npm install
 
 # Bundle app source
 COPY shairport-sync-radio/*.js .
+COPY shairport-sync-radio/*.conf .
 
 EXPOSE 8080
 CMD [ "node", "server.js" ]
