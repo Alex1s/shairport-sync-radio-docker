@@ -1,0 +1,23 @@
+version: "3.3"
+
+volumes:
+  tmp:
+    name: tmp
+
+
+services:
+  shairport-sync:
+    image: mikebrady/shairport-sync
+    container_name: shairport-sync
+    network_mode: host
+    volumes:
+      - ./shairport-sync.conf:/etc/shairport-sync.conf:ro
+      - tmp:/tmp
+    restart: unless-stopped
+  shairport-sync-radio:
+    network_mode: host
+    build: .
+    container_name: shairport-sync-radio 
+    volumes:
+      - tmp:/tmp
+    restart: unless-stopped
