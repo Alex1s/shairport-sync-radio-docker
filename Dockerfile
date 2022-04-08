@@ -21,6 +21,7 @@ RUN npm install
 # Bundle app source
 COPY shairport-sync-radio/*.js .
 COPY shairport-sync-radio/*.conf .
+COPY shairport-sync-radio/*.sh .
 
 COPY start.sh /
 RUN chmod 744 /start.sh
