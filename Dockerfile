@@ -19,12 +19,13 @@ RUN npm install
 # RUN npm ci --only=production
 
 # Bundle app source
-COPY shairport-sync-radio/*.js .
-COPY shairport-sync-radio/*.conf .
-COPY shairport-sync-radio/*.sh .
+COPY shairport-sync-radio/*.js ./
+COPY shairport-sync-radio/*.conf ./
+COPY shairport-sync-radio/*.sh ./
 
 COPY start.sh /
 RUN chmod 744 /start.sh
+RUN chmod 744 ./*.sh
 
 EXPOSE 8080
 ENTRYPOINT [ "/start.sh" ]

@@ -16,7 +16,8 @@ case $FORMAT in
     ;;
 
     *)
-        echo “Unknown FORMAT, defaulting to MP3"
+        echo "Unknown FORMAT defaulting to MP3"
         ./start_mp3.sh
+    ;;
 
 esac
