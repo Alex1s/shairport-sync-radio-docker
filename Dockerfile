@@ -1,9 +1,8 @@
 FROM node:buster
 
-# Install shairport-sync and ffmpeg
+# Install shairport-sync
 RUN apt update
 RUN apt install -y shairport-sync
-RUN apt install -y ffmpeg
 RUN rm -r /var/lib/apt/lists/*
 
 # Create app directory
@@ -20,12 +19,10 @@ RUN npm install
 
 # Bundle app source
 COPY shairport-sync-radio/*.js ./
-COPY shairport-sync-radio/*.conf ./
-COPY shairport-sync-radio/*.sh ./
+COPY shairport-sync-radio/shairport-sync.conf ./
 
 COPY start.sh /
 RUN chmod 744 /start.sh
-RUN chmod 744 ./*.sh
 
 EXPOSE 8080
 ENTRYPOINT [ "/start.sh" ]
