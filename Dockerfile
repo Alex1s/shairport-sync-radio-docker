@@ -24,5 +24,4 @@ COPY shairport-sync-radio/shairport-sync.conf ./
 COPY start.sh /
 RUN chmod 744 /start.sh
 
-EXPOSE 8080
 ENTRYPOINT [ "/start.sh" ]
