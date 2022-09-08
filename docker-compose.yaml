@@ -3,8 +3,22 @@ version: "3.7"
 services:
   shairport-sync-radio:
     network_mode: host
-    build: .
+    build: shairport-sync-radio
     container_name: shairport-sync-radio 
     environment:
       - PORT=8080
+    volumes:
+      - pipes:/tmp
     restart: unless-stopped
+  shairport-sync:
+    network_mode: host
+    image: mikebrady/shairport-sync
+    restart: unless-stopped
+    container_name: shairport-sync
+    volumes:
+      - ./shairport-sync.conf:/etc/shairport-sync.conf
+      - pipes:/tmp
+
+volumes:
+    pipes:
+
