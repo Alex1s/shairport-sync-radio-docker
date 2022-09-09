@@ -15,9 +15,19 @@ services:
     image: mikebrady/shairport-sync
     restart: unless-stopped
     container_name: shairport-sync
+    environment:
+      - BEARER_TOKEN=$BEARER_TOKEN
+      - ENTITY_ID=$ENTITY_ID
+      - HASS_HOST=$HASS_HOST
+      - HASS_PORT=$HASS_PORT
     volumes:
       - ./shairport-sync.conf:/etc/shairport-sync.conf
       - pipes:/tmp
+      - ./scripts/mute.sh:/usr/local/bin/mute.sh
+      - ./scripts/start.sh:/usr/local/bin/start.sh
+      - ./scripts/stop.sh:/usr/local/bin/stop.sh
+      - ./scripts/unmute.sh:/usr/local/bin/unmute.sh
+      - ./scripts/volume.sh:/usr/local/bin/volume.sh
 
 volumes:
     pipes:
